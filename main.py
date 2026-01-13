@@ -7,7 +7,7 @@ from datetime import datetime
 # =======================
 # Налаштування
 # =======================
-TOKEN = "7771111625:AAHzbboC_JFj136jlB3BVdsh1jbYxmFGLWQ"
+TOKEN = "7771111625:AAGYfvnvlc3blLW445bG9_PBmnYzb7aeiLU"
 bot = telebot.TeleBot(TOKEN)
 
 VIP_USER_ID = 6974025895  # твій Telegram ID
