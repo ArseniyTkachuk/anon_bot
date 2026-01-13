@@ -50,7 +50,7 @@ def start(message):
 
     # Якщо користувача ще нема в базі – додаємо
     if users_col.find_one({"_id": user_id}) is None:
-        users_col.insert_one({"_id": user_id})
+        users_col.insert_one({"_id": user_id, "username": message.chat.username})
 
     if len(args) > 1 and args[1].startswith("uid_"):
         receiver_id = int(args[1].split("_")[1])
