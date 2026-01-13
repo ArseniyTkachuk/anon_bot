@@ -29,7 +29,7 @@ messages_col.create_index([("created_at", ASCENDING)], expireAfterSeconds=del_ti
 # =======================
 def main_keyboard():
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.row("Моє персональне посилання", "Допомога")
+    keyboard.row("Моє посилання", "Допомога")
     return keyboard
 
 # =======================
@@ -64,7 +64,7 @@ def handle_text(message):
     text = message.text
 
     # Меню
-    if text == "Моє персональне посилання":
+    if text == "Моє посилання":
         link = f"https://t.me/{bot.get_me().username}?start=uid_{user_id}"
         bot.send_message(user_id, f"Твоє персональне посилання:\n{link}")
         return
