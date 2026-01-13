@@ -19,6 +19,8 @@ client = MongoClient(MONGO_URI)
 print(client.list_database_names())
 db = client["anon_bot"]
 messages_col = db["messages"]
+users_col = db["users"]  # зберігатиме всіх користувачів
+
 
 # TTL індекс (видалення повідомлень через 7 днів)
 del_time = 60*60*24*7
@@ -45,6 +47,10 @@ user_target_state = {}  # key: user_id, value: receiver_id для нового �
 def start(message):
     user_id = message.chat.id
     args = message.text.split()
+
+    # Якщо користувача ще нема в базі – додаємо
+    if users_col.find_one({"_id": user_id}) is None:
+        users_col.insert_one({"_id": user_id})
 
     if len(args) > 1 and args[1].startswith("uid_"):
         receiver_id = int(args[1].split("_")[1])
